@@ -1,0 +1,10 @@
+FROM python:3.6
+
+ENV LANG=C.UTF-8
+
+COPY domina-notes/requirements.txt /
+RUN pip3 install -r /requirements.txt
+
+ADD domina-notes/ /
+
+ENTRYPOINT cd /src && python3 app.py

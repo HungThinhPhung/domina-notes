@@ -1,0 +1,8 @@
+version: '3'
+services:
+  domina-notes:
+    build:
+      context: .
+      dockerfile: domina-notes/dockerfile
+    ports:
+    - 10000:10000
