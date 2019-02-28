@@ -10,12 +10,9 @@
     <link href="static/css/index.css" rel="stylesheet">
 </head>
 <body>
-    <form action="">
-    <textarea name="message" rows="20" cols="200">
-    </textarea>
-    <br>
-    <input type="submit" value="Submit">
-</form>
-
+    <form id="save-text" method="post" enctype="multipart/form-data">
+        <textarea id="text" name="message" rows="20" cols="200"></textarea><br>
+        <input type="submit" value="Save">
+    </form>
 </body>
 </html>

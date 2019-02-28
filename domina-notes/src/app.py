@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 import os
 import logging
 
@@ -8,6 +8,14 @@ app = Flask(__name__)
 @app.route("/notes", methods=["GET", "POST"])
 def index():
     return render_template("index.html")
+
+
+@app.route("/save", methods=["GET"])
+def save():
+    a = request.args.get('text')
+    with open('data.txt', 'a') as file:
+        file.write(request.args.get('text'))
+    return 'Done'
 
 
 if __name__ == "__main__":

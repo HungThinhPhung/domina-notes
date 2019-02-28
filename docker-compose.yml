@@ -6,3 +6,4 @@ services:
       dockerfile: domina-notes/dockerfile
     ports:
     - 10000:10000
+    image: hungthinhphung1996/domina-notes:0.1
