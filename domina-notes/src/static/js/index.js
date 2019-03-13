@@ -1,11 +1,18 @@
-$('#save-text').submit(function(){
-    console.log('asdaf');
-    var text = $('#text').text().trim();
-    console.log(text);
-    if(text == ''){
-        return;
-    }
-    text = text + '\n';
-    console.log(window.location.href.replace('notes', 'save') + "?text=");
-    xhttp.open("GET", window.location.href.replace('notes', 'save') + "?text="+text, true);
+$(document).ready(function(){
+    $('#save-text').submit(function(){
+        var text = $('#text').val().trim();
+        console.log(text);
+        if(text == ''){
+            return;
+        }
+        text = text + '\n';
+        $.ajax({
+            type: 'POST',
+            url:'/save',
+            data:'text='+ text,
+            success: function(msg){
+                alert(msg);
+            }
+        });
+    });
 });

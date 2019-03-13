@@ -10,12 +10,14 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/save", methods=["GET"])
+@app.route("/save", methods=["POST"])
 def save():
-    a = request.args.get('text')
-    with open('data.txt', 'a') as file:
-        file.write(request.args.get('text'))
-    return 'Done'
+    try:
+        with open('data.txt', 'a') as file:
+            file.write(request.form['text'])
+        return 'Done'
+    except:
+        return 'Failed'
 
 
 if __name__ == "__main__":
