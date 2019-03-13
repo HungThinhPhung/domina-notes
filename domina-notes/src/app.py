@@ -1,3 +1,4 @@
+import cow
 from flask import Flask, render_template, request
 import os
 import logging
@@ -13,10 +14,21 @@ def index():
 @app.route("/save", methods=["POST"])
 def save():
     try:
-        with open('data.txt', 'a') as file:
+        with open('/data/app-data/domina-notes/data.txt', 'a') as file:
             file.write(request.form['text'])
         return 'Done'
     except:
+        logging.error(cow.traceback.format_exc())
+        return 'Failed'
+
+
+@app.route("/load", methods=["GET"])
+def load():
+    try:
+        with open('/data/app-data/domina-notes/data.txt', 'r') as file:
+            return file.read()
+    except:
+        logging.error(cow.traceback.format_exc())
         return 'Failed'
 
 

@@ -15,4 +15,14 @@ $(document).ready(function(){
             }
         });
     });
+
+    $('#load-text').click(function(){
+        $.ajax({
+            type: 'GET',
+            url:'/load',
+            success: function(msg){
+                console.log(msg);
+            }
+        });
+    });
 });

@@ -4,6 +4,8 @@ services:
     build:
       context: .
       dockerfile: domina-notes/dockerfile
+    volumes:
+      - /data/app-data/domina-notes:/data/app-data/domina-notes
     ports:
     - 10000:10000
     image: hungthinhphung1996/domina-notes:0.1
