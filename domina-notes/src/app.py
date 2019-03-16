@@ -1,5 +1,5 @@
 import cow
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import os
 import logging
 
@@ -30,6 +30,14 @@ def load():
     except:
         logging.error(cow.traceback.format_exc())
         return 'Failed'
+
+
+@app.route("/download", methods=['GET', 'POST'])
+def download():
+    try:
+        return send_from_directory('/data/app-data/domina-notes/', 'download')
+    except Exception as e:
+        return str(e)
 
 
 if __name__ == "__main__":
